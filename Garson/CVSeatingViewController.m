@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 CodingVentures. All rights reserved.
 //
 
-#import "CVFirstViewController.h"
+#import "CVSeatingViewController.h"
 
-@interface CVFirstViewController ()
+@interface CVSeatingViewController ()
 
 @end
 
-@implementation CVFirstViewController
+@implementation CVSeatingViewController
 
 - (void)viewDidLoad
 {
