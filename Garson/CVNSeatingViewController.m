@@ -12,6 +12,7 @@
 #import "CVNSeating.h"
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import <AFNetworking/UIButton+AFNetworking.h>
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
@@ -99,9 +100,12 @@
       CGRect position = [self calculatePositionToAddAround:seatingAreaFrame];
 //      CVNUserTile *userTile = [[CVNUserTile alloc] initWithFrame:position];
       CGRect positionStart = CGRectMake(position.origin.x, position.origin.y, position.size.width/20.0, position.size.height/20.0);
-      UIImageView *userTile = [[UIImageView alloc] initWithFrame:positionStart];
+      UIButton *userTile = [[UIButton alloc] initWithFrame:positionStart];
       userTile.layer.masksToBounds = YES;
-      [userTile setImageWithURL:user.imageURL];
+      userTile.layer.borderColor = [[UIColor colorWithRed:0.99f green:0.50f blue:0.41f alpha:1.0f] CGColor];
+      userTile.layer.borderWidth = 5.0f;
+      [userTile addTarget:self action:@selector(userTileSelected:) forControlEvents:UIControlEventTouchUpInside];
+      [userTile setImageForState:UIControlStateNormal withURL:user.imageURL];
       [self.userTiles addObject:userTile];
       [self.view addSubview:userTile];
       [UIView animateWithDuration:0.50f
@@ -119,6 +123,10 @@
       delay += 0.4f;
     }
   }];
+}
+
+- (IBAction)userTileSelected:(id)sender {
+  [self performSegueWithIdentifier:@"UserOrders" sender:self];
 }
 
 - (BOOL) isUserTileCreatedForUserId:(NSString *) userId {
@@ -150,7 +158,7 @@
   CGPoint centerPoint = CGPointMake(tableCenter.x + translateX, tableCenter.y - translateY);
   
   NSLog(@"Centerpoint: (%f, %f)", tableCenter.x + distance * sin(numOfTiles * self.currentSpacingAngle), tableCenter.y + distance * cos(numOfTiles * self.currentSpacingAngle));
-  CGRect frame = CGRectMake(centerPoint.x - 25, centerPoint.y - 25, 50, 50);
+  CGRect frame = CGRectMake(centerPoint.x - 35, centerPoint.y - 35, 70, 70);
   return frame;
 
 }
