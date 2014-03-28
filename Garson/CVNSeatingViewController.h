@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CVSeatingViewController : UIViewController
+@interface CVNSeatingViewController : UIViewController
 
 @end

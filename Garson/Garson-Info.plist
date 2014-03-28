@@ -28,6 +28,12 @@
 	<string>Main_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Main_iPad</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Lato-Bla.ttf</string>
+		<string>Lato-Bol.ttf</string>
+		<string>Lato-Reg.ttf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
