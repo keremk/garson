@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		180CC02718E55BDF00983AA2 /* CVNOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180CC02618E55BDF00983AA2 /* CVNOrderViewController.m */; };
 		180CC02818E55BDF00983AA2 /* CVNOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180CC02618E55BDF00983AA2 /* CVNOrderViewController.m */; };
+		180CC02A18E763DC00983AA2 /* CVNUserTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180CC02918E763DC00983AA2 /* CVNUserTile.xib */; };
+		180CC02B18E763DC00983AA2 /* CVNUserTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180CC02918E763DC00983AA2 /* CVNUserTile.xib */; };
 		18CCA44B18DF765F00DBFCE1 /* Lato-Bla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CCA44818DF765F00DBFCE1 /* Lato-Bla.ttf */; };
 		18CCA44C18DF765F00DBFCE1 /* Lato-Bol.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CCA44918DF765F00DBFCE1 /* Lato-Bol.ttf */; };
 		18CCA44D18DF765F00DBFCE1 /* Lato-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CCA44A18DF765F00DBFCE1 /* Lato-Reg.ttf */; };
@@ -47,6 +49,7 @@
 /* Begin PBXFileReference section */
 		180CC02518E55BDF00983AA2 /* CVNOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNOrderViewController.h; sourceTree = "<group>"; };
 		180CC02618E55BDF00983AA2 /* CVNOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNOrderViewController.m; sourceTree = "<group>"; };
+		180CC02918E763DC00983AA2 /* CVNUserTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVNUserTile.xib; sourceTree = "<group>"; };
 		18B83AF018E4244D001E626A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		18CCA44818DF765F00DBFCE1 /* Lato-Bla.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bla.ttf"; sourceTree = "<group>"; };
 		18CCA44918DF765F00DBFCE1 /* Lato-Bol.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bol.ttf"; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 			children = (
 				18CCA4A218E2C77A00DBFCE1 /* CVNUserTile.h */,
 				18CCA4A318E2C77A00DBFCE1 /* CVNUserTile.m */,
+				180CC02918E763DC00983AA2 /* CVNUserTile.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -305,6 +309,7 @@
 				BDD13E7818413FD6005259E0 /* Images.xcassets in Resources */,
 				18CCA44C18DF765F00DBFCE1 /* Lato-Bol.ttf in Resources */,
 				BDD13E6D18413FD6005259E0 /* Main_iPhone.storyboard in Resources */,
+				180CC02A18E763DC00983AA2 /* CVNUserTile.xib in Resources */,
 				18CCA44D18DF765F00DBFCE1 /* Lato-Reg.ttf in Resources */,
 				BDD13E6418413FD6005259E0 /* InfoPlist.strings in Resources */,
 				18CCA44B18DF765F00DBFCE1 /* Lato-Bla.ttf in Resources */,
@@ -315,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180CC02B18E763DC00983AA2 /* CVNUserTile.xib in Resources */,
 				BDD13E8918413FD6005259E0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

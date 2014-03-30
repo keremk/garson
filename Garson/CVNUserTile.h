@@ -10,9 +10,9 @@
 
 @interface CVNUserTile : UIView
 @property(nonatomic, copy) NSString *userId;
-@property(nonatomic, strong) UIImage *userImage;
-@property(nonatomic, strong) UIImageView *userImageView;
 @property(nonatomic, copy) NSString *userDisplayName;
 @property(nonatomic, strong) NSURL *imageURL;
 
++ (instancetype) userTile;
+- (void)addTarget:(id) target action:(SEL)action;
 @end

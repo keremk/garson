@@ -8,36 +8,61 @@
 
 #import "CVNUserTile.h"
 #import <AGMedallionView/AGMedallionView.h>
-#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <AFNetworking/UIButton+AFNetworking.h>
+
+@interface CVNUserTile()
+@property (weak, nonatomic) IBOutlet UIButton *userImageButton;
+ 
+@end
 
 @implementation CVNUserTile
 
-- (id)initWithFrame:(CGRect)frame
++ (instancetype) userTile {
+  CVNUserTile *userTile = [[[NSBundle mainBundle] loadNibNamed:@"CVNUserTile" owner:nil options:nil] lastObject];
+  
+  // make sure customView is not nil or the wrong class!
+  if ([userTile isKindOfClass:[CVNUserTile class]])
+    return userTile;
+  else
+    return nil;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
   if (self) {
       // Initialization code
-    self.userImageView = [[UIImageView alloc] initWithFrame:frame];
-    [self addSubview:self.userImageView];
+    [self setupImageButton];
   }
   return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+  self = [super initWithCoder:coder];
+  if (self) {
+    [self setupImageButton];
+  }
+  return self;
+}
+
+- (void) setupImageButton {  
+  self.userImageButton.layer.masksToBounds = YES;
+  self.userImageButton.layer.borderColor = [[UIColor colorWithRed:0.99f green:0.50f blue:0.41f alpha:1.0f] CGColor];
+  self.userImageButton.layer.borderWidth = 5.0f;
+  self.userImageButton.layer.cornerRadius = self.bounds.size.height / 2.0f;
 }
 
 - (void) setImageURL:(NSURL *)imageURL {
   if (imageURL != _imageURL) {
     _imageURL = imageURL;
-    [self.userImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"User-Pic"]];
-    [self setNeedsDisplay];
+    [self.userImageButton setImageForState:UIControlStateNormal withURL:imageURL];
+    [self setupImageButton]; // Needs to be called here as well.
   }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)addTarget:(id) target action:(SEL)action {
+  [self.userImageButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
-*/
 
 @end

@@ -91,38 +91,45 @@
 
 - (void) updateUserTilesWithUsers:(NSArray *) users {
   CGRect seatingAreaFrame = self.seatingButton.frame;
-  __block NSTimeInterval delay = 0.0;
+  CGFloat distance = seatingAreaFrame.size.height;
+  CGPoint seatingCenter = self.seatingButton.center;
+  __block NSTimeInterval delay = 0.4f;
   [users enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     // Check if tile is created
     CVNUser *user = (CVNUser *) obj;
     if (![self isUserTileCreatedForUserId:user.userId]) {
       // Add the tile
-      CGRect position = [self calculatePositionToAddAround:seatingAreaFrame];
-//      CVNUserTile *userTile = [[CVNUserTile alloc] initWithFrame:position];
-      CGRect positionStart = CGRectMake(position.origin.x, position.origin.y, position.size.width/20.0, position.size.height/20.0);
-      UIButton *userTile = [[UIButton alloc] initWithFrame:positionStart];
-      userTile.layer.masksToBounds = YES;
-      userTile.layer.borderColor = [[UIColor colorWithRed:0.99f green:0.50f blue:0.41f alpha:1.0f] CGColor];
-      userTile.layer.borderWidth = 5.0f;
-      [userTile addTarget:self action:@selector(userTileSelected:) forControlEvents:UIControlEventTouchUpInside];
-      [userTile setImageForState:UIControlStateNormal withURL:user.imageURL];
-      [self.userTiles addObject:userTile];
-      [self.view addSubview:userTile];
-      [UIView animateWithDuration:0.50f
-                            delay:delay
-           usingSpringWithDamping:0.6
-            initialSpringVelocity:0.8
-                          options:UIViewAnimationOptionCurveEaseIn animations:^{
-                            userTile.layer.cornerRadius = CGRectGetHeight(position) / 2.0;
-                            [userTile setFrame:position];
-                          } completion:^(BOOL finished) {
-                            
-                          }];
-//      userTile.userId = user.userId;
-//      userTile.imageURL = user.imageURL;
+      CGPoint tileCenter = [self calculateCenterPointAround:seatingCenter withDistance:distance];
+      [self addUserTileForUser:user centeredAt:tileCenter animated:YES withDelay:delay];
       delay += 0.4f;
     }
   }];
+}
+
+- (void) addUserTileForUser:(CVNUser *) user
+                 centeredAt:(CGPoint) center
+                   animated:(BOOL) animated
+                  withDelay:(CGFloat) delay {
+  CVNUserTile *userTile = [CVNUserTile userTile];
+  userTile.center = center;
+  userTile.userId = user.userId;
+  userTile.imageURL = user.imageURL;
+  [userTile addTarget:self action:@selector(userTileSelected:)];
+  
+  [self.userTiles addObject:userTile];
+  [self.view addSubview:userTile];
+  
+  if (animated) {
+    userTile.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+    [UIView animateWithDuration:0.75f
+                          delay:delay
+         usingSpringWithDamping:0.3
+          initialSpringVelocity:0.8
+                        options:UIViewAnimationOptionCurveEaseIn animations:^{
+                          userTile.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                        } completion:^(BOOL finished) {
+                        }];
+  }
 }
 
 - (IBAction)userTileSelected:(id)sender {
@@ -132,35 +139,25 @@
 - (BOOL) isUserTileCreatedForUserId:(NSString *) userId {
   __block BOOL isCreated = NO;
   
-//  [self.userTiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//    CVNUserTile *userTile = (CVNUserTile *) obj;
-//    
-//    if ([userTile.userId isEqualToString:userId]) {
-//      // Found it
-//      *stop = YES;
-//      isCreated = YES;
-//    }
-//  }];
+  [self.userTiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    CVNUserTile *userTile = (CVNUserTile *) obj;
+    
+    if ([userTile.userId isEqualToString:userId]) {
+      // Found it
+      *stop = YES;
+      isCreated = YES;
+    }
+  }];
   return isCreated;
 }
 
-- (CGRect) calculatePositionToAddAround:(CGRect) seatingAreaFrame {
-  CGFloat tableRadius = seatingAreaFrame.size.width / 2.0f;
-  CGPoint tableCenter = CGPointMake(CGRectGetMidX(seatingAreaFrame),
-                                    CGRectGetMidY(seatingAreaFrame));
-
+- (CGPoint) calculateCenterPointAround:(CGPoint) tableCenter withDistance:(CGFloat) distance{
   CGFloat numOfTiles = (CGFloat)[self.userTiles count];
-  
-  CGFloat distance = 2.0f * tableRadius;
   
   CGFloat translateX = (CGFloat) (distance * sinf((CGFloat)numOfTiles * self.currentSpacingAngle));
   CGFloat translateY = (CGFloat) (distance * cosf((CGFloat)numOfTiles * self.currentSpacingAngle));
   CGPoint centerPoint = CGPointMake(tableCenter.x + translateX, tableCenter.y - translateY);
-  
-  NSLog(@"Centerpoint: (%f, %f)", tableCenter.x + distance * sin(numOfTiles * self.currentSpacingAngle), tableCenter.y + distance * cos(numOfTiles * self.currentSpacingAngle));
-  CGRect frame = CGRectMake(centerPoint.x - 35, centerPoint.y - 35, 70, 70);
-  return frame;
-
+  return centerPoint;
 }
 
 
