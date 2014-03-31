@@ -42,12 +42,18 @@
   self.startingAngle = M_PI / 2.0; // Start at 90
   [self setupSeatingButton];
   [self startWatchingForSeatingAreas];
-
+  [self setupTopBar];
 #ifdef DEBUG
   [self testAddingUserTiles];
 #endif
 }
 
+- (void) setupTopBar {
+  [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                forBarMetrics:UIBarMetricsDefault];
+  self.navigationController.navigationBar.shadowImage = [UIImage new];
+  self.navigationController.navigationBar.translucent = YES;
+}
 
 - (void) setupSeatingButton {
   self.seatingButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;

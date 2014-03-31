@@ -18,6 +18,12 @@
 		18CCA45118E0067900DBFCE1 /* CVNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA44F18E0067900DBFCE1 /* CVNMenuViewController.m */; };
 		18CCA4A418E2C77A00DBFCE1 /* CVNUserTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA4A318E2C77A00DBFCE1 /* CVNUserTile.m */; };
 		18CCA4A518E2C77A00DBFCE1 /* CVNUserTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCA4A318E2C77A00DBFCE1 /* CVNUserTile.m */; };
+		18D8CB9818E88F4D00321E8C /* CVNOrderSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8CB9718E88F4D00321E8C /* CVNOrderSummaryView.m */; };
+		18D8CB9918E88F4D00321E8C /* CVNOrderSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8CB9718E88F4D00321E8C /* CVNOrderSummaryView.m */; };
+		18D8CB9B18E88F6400321E8C /* CVNOrderSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D8CB9A18E88F6400321E8C /* CVNOrderSummaryView.xib */; };
+		18D8CB9C18E88F6400321E8C /* CVNOrderSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D8CB9A18E88F6400321E8C /* CVNOrderSummaryView.xib */; };
+		18D8CBA918E8EDC400321E8C /* CVNOrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8CBA818E8EDC400321E8C /* CVNOrderItemCell.m */; };
+		18D8CBAA18E8EDC400321E8C /* CVNOrderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8CBA818E8EDC400321E8C /* CVNOrderItemCell.m */; };
 		1CE3B3FC740E4725899AA57A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A72D012F03864A1DAB50660D /* libPods.a */; };
 		BDD13E5A18413FD6005259E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD13E5918413FD6005259E0 /* Foundation.framework */; };
 		BDD13E5C18413FD6005259E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD13E5B18413FD6005259E0 /* CoreGraphics.framework */; };
@@ -58,6 +64,11 @@
 		18CCA44F18E0067900DBFCE1 /* CVNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNMenuViewController.m; sourceTree = "<group>"; };
 		18CCA4A218E2C77A00DBFCE1 /* CVNUserTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNUserTile.h; sourceTree = "<group>"; };
 		18CCA4A318E2C77A00DBFCE1 /* CVNUserTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNUserTile.m; sourceTree = "<group>"; };
+		18D8CB9618E88F4D00321E8C /* CVNOrderSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNOrderSummaryView.h; sourceTree = "<group>"; };
+		18D8CB9718E88F4D00321E8C /* CVNOrderSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNOrderSummaryView.m; sourceTree = "<group>"; };
+		18D8CB9A18E88F6400321E8C /* CVNOrderSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVNOrderSummaryView.xib; sourceTree = "<group>"; };
+		18D8CBA718E8EDC400321E8C /* CVNOrderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNOrderItemCell.h; sourceTree = "<group>"; };
+		18D8CBA818E8EDC400321E8C /* CVNOrderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNOrderItemCell.m; sourceTree = "<group>"; };
 		53D1A83D10B74A2B82B7263F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A72D012F03864A1DAB50660D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD13E5618413FD6005259E0 /* Garson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garson.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,8 +134,18 @@
 				18CCA4A218E2C77A00DBFCE1 /* CVNUserTile.h */,
 				18CCA4A318E2C77A00DBFCE1 /* CVNUserTile.m */,
 				180CC02918E763DC00983AA2 /* CVNUserTile.xib */,
+				18D8CB9618E88F4D00321E8C /* CVNOrderSummaryView.h */,
+				18D8CB9718E88F4D00321E8C /* CVNOrderSummaryView.m */,
+				18D8CB9A18E88F6400321E8C /* CVNOrderSummaryView.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		18D8CB9518E7B8BD00321E8C /* TransitionAnimators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TransitionAnimators;
 			sourceTree = "<group>";
 		};
 		BD522D401841448B00A582AF /* iPhoneUI */ = {
@@ -179,6 +200,7 @@
 		BDD13E5F18413FD6005259E0 /* Garson */ = {
 			isa = PBXGroup;
 			children = (
+				18D8CB9518E7B8BD00321E8C /* TransitionAnimators */,
 				18CCA4A118E2C75200DBFCE1 /* Views */,
 				BD522D411841449A00A582AF /* iPadUI */,
 				BD522D401841448B00A582AF /* iPhoneUI */,
@@ -192,6 +214,8 @@
 				18CCA44F18E0067900DBFCE1 /* CVNMenuViewController.m */,
 				180CC02518E55BDF00983AA2 /* CVNOrderViewController.h */,
 				180CC02618E55BDF00983AA2 /* CVNOrderViewController.m */,
+				18D8CBA718E8EDC400321E8C /* CVNOrderItemCell.h */,
+				18D8CBA818E8EDC400321E8C /* CVNOrderItemCell.m */,
 			);
 			path = Garson;
 			sourceTree = "<group>";
@@ -306,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDD13E7018413FD6005259E0 /* Main_iPad.storyboard in Resources */,
+				18D8CB9B18E88F6400321E8C /* CVNOrderSummaryView.xib in Resources */,
 				BDD13E7818413FD6005259E0 /* Images.xcassets in Resources */,
 				18CCA44C18DF765F00DBFCE1 /* Lato-Bol.ttf in Resources */,
 				BDD13E6D18413FD6005259E0 /* Main_iPhone.storyboard in Resources */,
@@ -321,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				180CC02B18E763DC00983AA2 /* CVNUserTile.xib in Resources */,
+				18D8CB9C18E88F6400321E8C /* CVNOrderSummaryView.xib in Resources */,
 				BDD13E8918413FD6005259E0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,11 +392,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CCA4A418E2C77A00DBFCE1 /* CVNUserTile.m in Sources */,
+				18D8CB9818E88F4D00321E8C /* CVNOrderSummaryView.m in Sources */,
 				BDD13E6618413FD6005259E0 /* main.m in Sources */,
 				18CCA45018E0067900DBFCE1 /* CVNMenuViewController.m in Sources */,
 				BDD13E7318413FD6005259E0 /* CVNSeatingViewController.m in Sources */,
 				BDD13E6A18413FD6005259E0 /* CVNAppDelegate.m in Sources */,
 				180CC02718E55BDF00983AA2 /* CVNOrderViewController.m in Sources */,
+				18D8CBA918E8EDC400321E8C /* CVNOrderItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,9 +407,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CCA4A518E2C77A00DBFCE1 /* CVNUserTile.m in Sources */,
+				18D8CB9918E88F4D00321E8C /* CVNOrderSummaryView.m in Sources */,
 				180CC02818E55BDF00983AA2 /* CVNOrderViewController.m in Sources */,
 				BDD13E8B18413FD6005259E0 /* GarsonTests.m in Sources */,
 				18CCA45118E0067900DBFCE1 /* CVNMenuViewController.m in Sources */,
+				18D8CBAA18E8EDC400321E8C /* CVNOrderItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

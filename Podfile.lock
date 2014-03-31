@@ -30,12 +30,12 @@ PODS:
   - Mantle (1.4.1):
     - Mantle/extobjc
   - Mantle/extobjc (1.4.1)
-  - ReactiveCocoa (2.2.4):
+  - ReactiveCocoa (2.3):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.2.4):
+  - ReactiveCocoa/Core (2.3):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.2.4)
+  - ReactiveCocoa/no-arc (2.3)
   - SSKeychain (1.2.1)
 
 DEPENDENCIES:
@@ -55,7 +55,7 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 5788541337dc88265bc940cb5ffb05915f9b64e3
   GarsonAPI: 646934f4e78af6da95a24794ccec3d645c343c11
   Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
-  ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
+  ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
   SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
 
 COCOAPODS: 0.29.0
