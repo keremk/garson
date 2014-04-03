@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CVNOrderUpdate <NSObject>
+-(void) addToOrder;
+-(void) order;
+@end
+
 @interface CVNOrderSummaryView : UIView
 + (instancetype) orderSummaryView;
+
+@property(nonatomic, assign) id<CVNOrderUpdate> delegate;
 @end

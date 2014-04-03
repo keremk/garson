@@ -79,4 +79,8 @@ static NSString * const kFontBlack = @"Lato-Black";
 - (void) initializeContent {
   
 }
+
+- (IBAction)addToOrder:(id)sender {
+  [self.delegate addToOrder];
+}
 @end

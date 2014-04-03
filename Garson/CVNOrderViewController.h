@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CVNOrderViewController : UITableViewController
+#import "CVNOrderSummaryView.h"
+@interface CVNOrderViewController : UITableViewController<CVNOrderUpdate>
 
 @end

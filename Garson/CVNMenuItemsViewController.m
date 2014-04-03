@@ -1,29 +1,30 @@
 //
-//  CVNOrderViewController.m
+//  CVNRestaurantMenuViewControllerTableViewController.m
 //  Garson
 //
-//  Created by Kerem Karatal on 3/28/14.
+//  Created by Kerem Karatal on 3/30/14.
 //  Copyright (c) 2014 CodingVentures. All rights reserved.
 //
 
-#import "CVNOrderViewController.h"
-#import "CVNOrderItemCell.h"
+#import "CVNMenuItemsViewController.h"
+#import "CVNMenuItemCell.h"
 
-#import <GarsonAPI/CVNOrder.h>
-#import <GarsonAPI/CVNOrderItem.h>
+#import <GarsonAPI/CVNMenuItem.h>
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
-@interface CVNOrderViewController ()
+@interface CVNMenuItemsViewController ()
+
 @end
 
-@implementation CVNOrderViewController
+@implementation CVNMenuItemsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
   self = [super initWithStyle:style];
   if (self) {
-      // Custom initialization
+    // Custom initialization
+    self.menuItems = [NSArray array];
   }
   return self;
 }
@@ -31,24 +32,13 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
   
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-  CVNOrderSummaryView *orderSummaryView = [CVNOrderSummaryView orderSummaryView];
-  orderSummaryView.delegate = self;
-  self.tableView.tableFooterView = orderSummaryView;
-  [self setupTopBar];
 }
-
-- (void) setupTopBar {
-  [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                forBarMetrics:UIBarMetricsDefault];
-  self.navigationController.navigationBar.shadowImage = [UIImage new];
-  self.navigationController.navigationBar.translucent = YES;
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -67,35 +57,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  NSUInteger numOfItems = [[[CVNOrder currentOrder] orderItems] count];
-
-  return numOfItems;
+  return [self.menuItems count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  CVNOrderItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderItemCell" forIndexPath:indexPath];
-  NSArray *orderItems = [[CVNOrder currentOrder] orderItems];
-  CVNOrderItem *orderItem = [orderItems objectAtIndex:indexPath.row];
+  CVNMenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell" forIndexPath:indexPath];
   
   // Configure the cell...
-  cell.nameLabel.text = orderItem.name;
-  cell.descriptionLabel.text = orderItem.description;
-  [cell.itemImageView setImageWithURL:orderItem.imageURL];
-  cell.countLabel.text = [orderItem formattedItemCount];
-  cell.priceLabel.text = [orderItem formattedPrice];
+
+  CVNMenuItem *menuItem = [self.menuItems objectAtIndex:indexPath.row];
+  cell.nameLabel.text = menuItem.name;
+  cell.descriptionLabel.text = menuItem.description;
+  [cell.itemImageView setImageWithURL:menuItem.imageURL];
+  cell.priceLabel.text = [menuItem formattedPrice];
   return cell;
-}
-
-#pragma mark - CVNOrderUpdate
-
-- (IBAction)add:(id)sender {
-  [self performSegueWithIdentifier:@"RestaurantMenuDisplaySegue" sender:self];
-}
-
-- (void) addToOrder {
-  [self performSegueWithIdentifier:@"RestaurantMenuDisplaySegue" sender:self];
 }
 
 /*

@@ -1,0 +1,180 @@
+{ 
+  "title": "Dinner Menu",
+  "time_interval": "05:00pm-11:00pm",
+  "sections":  [
+    {
+      "id": "starters",
+      "title": "Starters",
+      "image": "starters",
+      "items": [
+        {
+          "description": "BBQ spiced chicharrones",
+          "image": "chicharron-mixto",
+          "name": "Beef Tendon Crisps",
+          "price": 5.0
+        },
+        {
+          "description": "Brussels Sprouts w/ Pineapple Chili Glaze & Crispy Shallots",
+          "image": "brussel-sprouts",
+          "name": "Brussel Sprouts",
+          "price": 5.0
+        },
+        {
+          "description": "Smoked butter, sea salt",
+          "image": "radish",
+          "name": "Radish",
+          "price": 6.0
+        },
+        {
+          "description": "Chicory, apple, walnut, smoked bleu cheese",
+          "image": "chopped-salad",
+          "name": "Chopped Salad",
+          "price": 9.0
+        },
+        {
+          "description": "Orange, satsuma, smoked onion, torn bread",
+          "image": "citrus-panzanella-slaw",
+          "name": "Citrus Panzanella",
+          "price": 10.0
+        },
+        {
+          "description": "Grapefruit, smoked goat cheese, avocado",
+          "image": "beet-salad",
+          "name": "Coal Roasted Beet",
+          "price": 10.0
+        },
+        {
+          "description": "Asian pear, kohlrabi, sesame, cured smoked egg, crispy beef tendon",
+          "image": "steak-tartare",
+          "name": "Beef Tartare",
+          "price": 12.0
+        }]
+    },
+    {
+      "id": "potato-grains-beans",
+      "title": "Potato, Grains, Beans",
+      "image": "potato-grains-beans",
+      "items": [
+        {
+          "description": "Crème fraiche, pickled celery, herb, mustard seed",
+          "image": "potato-salad-with-smoked-bacon",
+          "name": "Smoked Potato Salad",
+          "price": 8.0
+        },
+        {
+          "description": "Currants, preserved lemon, cilantro",
+          "image": "herby-couscous",
+          "name": "Cous Cous",
+          "price": 7.0
+        },
+        {
+          "description": "Parsnip",
+          "image": "mac-n-cheese",
+          "name": "Mac n Cheese",
+          "price": 8.0
+        },
+        {
+          "description": "Smoked gigante beans, burnt ends, barbecue sauce",
+          "image": "beans-and-burnt-ends",
+          "name": "Beans & Burnt Ends",
+          "price": 8.0
+        },
+        {
+          "description": "Honey butter rolls - 3 rolls per order",
+          "image": "pull-apart-rolls",
+          "name": "Pull-Apart Rolls",
+          "price": 5.0
+        }]
+    },
+    {
+      "id": "meat-fish",
+      "title": "Meat & Fish",
+      "image": "meat-fish",
+      "items": [
+        {
+          "description": "Alderwood plank, citrus, fennel",
+          "image": "grilled-fish",
+          "name": "Market Fish",
+          "price": 15.0
+        },
+        {
+          "description": "Forbidden rice, aji amarillo, radish",
+          "image": "octopus",
+          "name": "Octopus",
+          "price": 14.0
+        },
+        {
+          "description": "Vinegar-mustard sauce",
+          "image": "pulled-pork",
+          "name": "Pulled Pork",
+          "price": 13.0
+        },
+        {
+          "description": "Hi Lo chili rub",
+          "image": "pork-ribs",
+          "name": "Pork Ribs (served wet or dry)",
+          "price": 15.0
+        },
+        {
+          "description": "Pickled mustard seeds, sauerkraut",
+          "image": "sausage-sauerkraut",
+          "name": "Hi Lo Sausage",
+          "price": 12.0
+        },
+        {
+          "description": "Salt and pepper rub, barbecue sauce",
+          "image": "beef-brisket",
+          "name": "Beef Brisket",
+          "price": 13.0
+        },
+        {
+          "description": "Hi Lo chili rub, barbecue sauce",
+          "image": "porchetta-sandwich",
+          "name": "Porchetta",
+          "price": 12.0
+        }]
+      },
+    {
+      "id": "vegetables",
+      "title": "Vegetables",
+      "image": "vegetables",
+      "items": [
+        {
+          "description": "Smoked rib tips",
+          "image": "creamed-greens",
+          "name": "Creamed Greens",
+          "price": 9.0
+        },
+        {
+          "description": "Medjool date, hazelnut",
+          "image": "chantenay-carrots",
+          "name": "Chantenay Carrots",
+          "price": 8.0
+        },
+        {
+          "description": "Pomegranate, dandelion, brown butter",
+          "image": "winter-squash",
+          "name": "Winter Squash",
+          "price": 8.0
+        }]
+    },
+    {
+      "id": "desserts",
+      "title": "Desserts",
+      "image": "desserts",
+      "items": [
+        {
+          "description": "Chocolate namelaka, graham cracker, toasted meringue",
+          "image": "smores",
+          "name": "Smores",
+          "price": 7.0
+        },
+        {
+          "description": "Satsuma, whipped cream",
+          "image": "tres-leches-cake",
+          "name": "Tres Leches Cake",
+          "price": 7.0
+        }]
+    }
+  ]
+}
