@@ -10,6 +10,7 @@
 #import "CVNUser.h"
 #import "CVNUserTile.h"
 #import "CVNSeating.h"
+#import "CVNOrderViewController.h"
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <AFNetworking/UIButton+AFNetworking.h>
@@ -117,10 +118,11 @@
                    animated:(BOOL) animated
                   withDelay:(CGFloat) delay {
   CVNUserTile *userTile = [CVNUserTile userTile];
+  userTile.user = user;
   userTile.center = center;
   userTile.userId = user.userId;
   userTile.imageURL = user.imageURL;
-  [userTile addTarget:self action:@selector(userTileSelected:)];
+  userTile.delegate = self;
   
   [self.userTiles addObject:userTile];
   [self.view addSubview:userTile];
@@ -138,8 +140,21 @@
   }
 }
 
-- (IBAction)userTileSelected:(id)sender {
-  [self performSegueWithIdentifier:@"UserOrders" sender:self];
+- (void) didSelectUserTile:(CVNUserTile *)userTile {
+  [self performSegueWithIdentifier:@"UserOrders" sender:userTile];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  // Get the new view controller using [segue destinationViewController].
+  // Pass the selected object to the new view controller.
+  
+  if ([segue.identifier isEqualToString:@"UserOrders"]) {
+    CVNUserTile *userTile = (CVNUserTile *) sender;
+    CVNUser *user = userTile.user;
+    CVNOrderViewController *orderVC = [segue destinationViewController];
+    orderVC.user = user;
+  }
 }
 
 - (BOOL) isUserTileCreatedForUserId:(NSString *) userId {

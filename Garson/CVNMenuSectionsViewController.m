@@ -98,6 +98,7 @@
     CVNMenuItemsViewController *menuItemsVC = [segue destinationViewController];
     CVNMenuSection *section = (CVNMenuSection *) sender;
     menuItemsVC.menuItems = section.items;
+    menuItemsVC.order = self.order;
   }
 }
 

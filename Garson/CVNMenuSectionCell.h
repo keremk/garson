@@ -11,5 +11,4 @@
 @interface CVNMenuSectionCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *sectionImageView;
 @property (weak, nonatomic) IBOutlet UILabel *sectionTitleLabel;
-
 @end

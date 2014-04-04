@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CVNOrderSummaryView.h"
-@interface CVNOrderViewController : UITableViewController<CVNOrderUpdate>
+#import <GarsonAPI/CVNUser.h>
 
+@interface CVNOrderViewController : UITableViewController<CVNOrderUpdate, CVNOrderChange>
+@property(nonatomic, strong) CVNUser *user;
 @end

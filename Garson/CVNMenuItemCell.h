@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class CVNMenuItemCell;
+
+@protocol CVNMenuItemDataChange
+- (void) menuItemCell:(CVNMenuItemCell *) cell itemCountChanged:(NSInteger) itemCount;
+@end
+
 @interface CVNMenuItemCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemCountLabel;
+@property (weak, nonatomic) id<CVNMenuItemDataChange> delegate;
+@property (assign, nonatomic) NSInteger itemIndex;
 @end

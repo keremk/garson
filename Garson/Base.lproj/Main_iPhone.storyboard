@@ -131,6 +131,9 @@
                                             <rect key="frame" x="113" y="138" width="94" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <color key="tintColor" red="0.98823529409999999" green="0.94509803920000002" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="counterValueChanged:" destination="GQ2-8K-wTP" eventType="valueChanged" id="Byt-sd-XUG"/>
+                                            </connections>
                                         </stepper>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$10.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgi-JJ-OhW">
                                             <rect key="frame" x="27" y="142" width="70" height="21"/>
@@ -159,6 +162,7 @@
                                 <connections>
                                     <outlet property="descriptionLabel" destination="zL4-Yj-GuF" id="t0A-RB-3sb"/>
                                     <outlet property="itemCountLabel" destination="PLv-nS-mjf" id="VOg-q4-m6i"/>
+                                    <outlet property="itemCountStepper" destination="HFv-TO-mIY" id="w1Q-FJ-FWR"/>
                                     <outlet property="itemImageView" destination="kDZ-d6-leR" id="PC7-wp-XEu"/>
                                     <outlet property="nameLabel" destination="Txj-5C-184" id="X0h-ie-jyu"/>
                                     <outlet property="priceLabel" destination="Vgi-JJ-OhW" id="N2x-IZ-yxs"/>

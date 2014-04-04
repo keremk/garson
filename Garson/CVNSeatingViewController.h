@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CVNUserTile.h"
 
-@interface CVNSeatingViewController : UIViewController
+@interface CVNSeatingViewController : UIViewController<CVNUserSelection>
 
 @end

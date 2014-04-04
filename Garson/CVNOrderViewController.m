@@ -8,6 +8,7 @@
 
 #import "CVNOrderViewController.h"
 #import "CVNOrderItemCell.h"
+#import "CVNMenuSectionsViewController.h"
 
 #import <GarsonAPI/CVNOrder.h>
 #import <GarsonAPI/CVNOrderItem.h>
@@ -40,6 +41,7 @@
   orderSummaryView.delegate = self;
   self.tableView.tableFooterView = orderSummaryView;
   [self setupTopBar];
+  [self setupCurrentOrder];
 }
 
 - (void) setupTopBar {
@@ -49,6 +51,12 @@
   self.navigationController.navigationBar.translucent = YES;
 }
 
+- (void) setupCurrentOrder {
+  if (self.user.currentOrder == nil) {
+    self.user.currentOrder = [[CVNOrder alloc] init];
+  }
+  self.user.currentOrder.delegate = self;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -67,7 +75,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
-  NSUInteger numOfItems = [[[CVNOrder currentOrder] orderItems] count];
+  NSUInteger numOfItems = [[self.user.currentOrder orderItems] count];
 
   return numOfItems;
 }
@@ -76,7 +84,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   CVNOrderItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderItemCell" forIndexPath:indexPath];
-  NSArray *orderItems = [[CVNOrder currentOrder] orderItems];
+  NSArray *orderItems = [self.user.currentOrder orderItems];
   CVNOrderItem *orderItem = [orderItems objectAtIndex:indexPath.row];
   
   // Configure the cell...
@@ -98,6 +106,12 @@
   [self performSegueWithIdentifier:@"RestaurantMenuDisplaySegue" sender:self];
 }
 
+#pragma mark - CVNOrderChange
+
+- (void) didChangeOrder:(CVNOrder *)order {
+  self.user.currentOrder = order;
+  [self.tableView reloadData];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,7 +150,6 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -144,7 +157,11 @@
 {
   // Get the new view controller using [segue destinationViewController].
   // Pass the selected object to the new view controller.
+  if ([segue.identifier isEqualToString:@"RestaurantMenuDisplaySegue"]) {
+    CVNMenuSectionsViewController *menuSectionsVC = [segue destinationViewController];
+    menuSectionsVC.order = self.user.currentOrder;
+  }
+
 }
-*/
 
 @end

@@ -67,13 +67,27 @@
   // Configure the cell...
 
   CVNMenuItem *menuItem = [self.menuItems objectAtIndex:indexPath.row];
+  
+  cell.delegate = self;
+  cell.itemIndex = indexPath.row;
   cell.nameLabel.text = menuItem.name;
   cell.descriptionLabel.text = menuItem.description;
   [cell.itemImageView setImageWithURL:menuItem.imageURL];
   cell.priceLabel.text = [menuItem formattedPrice];
+  
+  cell.itemCountLabel.text = [NSString stringWithFormat:@"%lu items", (long)[self.order itemCountForMenuItem:menuItem]];
   return cell;
 }
 
+- (void) menuItemCell:(CVNMenuItemCell *) cell itemCountChanged:(NSInteger) itemCount {
+  [self updateOrderForItemIndex: cell.itemIndex forItemCount:itemCount];
+}
+
+- (void) updateOrderForItemIndex:(NSInteger) itemIndex forItemCount:(NSInteger) itemCount {
+  CVNMenuItem *menuItem = [self.menuItems objectAtIndex:itemIndex];
+  [self.order addMenuItem:menuItem forItemCount:itemCount];
+  [self.order.delegate didChangeOrder:self.order];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

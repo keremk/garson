@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GarsonAPI/CVNOrder.h>
+
 
 @interface CVNMenuSectionsViewController : UICollectionViewController
-
+@property(nonatomic, strong) CVNOrder *order;
 @end
