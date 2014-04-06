@@ -7,7 +7,6 @@
 //
 
 #import "CVNUserTile.h"
-#import <AGMedallionView/AGMedallionView.h>
 #import <AFNetworking/UIButton+AFNetworking.h>
 
 @interface CVNUserTile()

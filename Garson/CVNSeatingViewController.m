@@ -18,12 +18,21 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
+static const NSInteger kSeatingDistance = 0.2f;
+
 @interface CVNSeatingViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *seatingButton;
 @property (nonatomic, strong) NSMutableArray *userTiles;
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
 @property (nonatomic, assign) CGFloat currentSpacingAngle;
 @property (nonatomic, assign) CGFloat startingAngle;
+
+@property (nonatomic, strong) CVNSeating *currentSeating;
+
+@property (nonatomic, strong) ESTBeaconManager *beaconManager;
+@property (nonatomic, strong) ESTBeaconRegion *region;
+@property (nonatomic, strong) NSArray *beaconsArray;
+
 @end
 
 @implementation CVNSeatingViewController
@@ -41,12 +50,25 @@
   self.userTiles = [NSMutableArray array];
   self.currentSpacingAngle = M_PI / 2.0;
   self.startingAngle = M_PI / 2.0; // Start at 90
+  
+  self.currentSeating = nil;
   [self setupSeatingButton];
-  [self startWatchingForSeatingAreas];
   [self setupTopBar];
 #ifdef DEBUG
-  [self testAddingUserTiles];
+//  [self testAddingUserTiles];
 #endif
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  [self setupBeaconMonitoring];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
+  
+  [self.beaconManager stopRangingBeaconsInRegion:self.region];
 }
 
 - (void) setupTopBar {
@@ -68,7 +90,28 @@
   }];
 }
 
-#pragma mark - Test Stuff 
+- (void) setupBeaconMonitoring {
+  self.beaconManager = [[ESTBeaconManager alloc] init];
+  self.beaconManager.delegate = self;
+  
+  /*
+   * Creates sample region object (you can additionaly pass major / minor values).
+   *
+   * We specify it using only the ESTIMOTE_PROXIMITY_UUID because we want to discover all
+   * hardware beacons with Estimote's proximty UUID.
+   */
+  self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID
+                                                    identifier:@"EstimoteSampleRegion"];
+  
+  /*
+   * Starts looking for Estimote beacons.
+   * All callbacks will be delivered to beaconManager delegate.
+   */
+  [self.beaconManager startRangingBeaconsInRegion:self.region];
+
+}
+
+#pragma mark - Test Stuff
 - (void) testAddingUserTiles {
   CVNSeating *seating = [[CVNSeating alloc] init];
   [seating seating:@"123" willNotifyWhenUsersCheckin:^(NSArray *users) {
@@ -84,9 +127,47 @@
 
 #pragma mark - Proximity Watch
 
-- (void) startWatchingForSeatingAreas {
-  // Setup Estimote
+- (void)beaconManager:(ESTBeaconManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(ESTBeaconRegion *)region {
+  self.beaconsArray = beacons;
+
+  __block float minDistance = 10.0f;
+  __block ESTBeacon *selectedBeacon = nil;
+  [beacons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    ESTBeacon *beacon = (ESTBeacon *) obj;
+    NSLog(@"Beacon Detected %d, distance: %f", [beacon.minor integerValue], [beacon.distance floatValue]);
+    float distance = [beacon.distance floatValue];
+    if (distance >= 0 && distance < minDistance) {
+      minDistance = distance;
+      selectedBeacon = beacon;
+    }
+  }];
+  if (minDistance <= 0.2f) {
+    // This is our seat!
+    NSInteger restaurantBeaconId = [selectedBeacon.major integerValue];
+    NSInteger seatingId = [selectedBeacon.minor integerValue];
+    NSLog(@"Beacon is closer: %lu", (long) seatingId);
+    if (!(self.currentSeating.seatingId == seatingId)) {
+      NSLog(@"New Seating");
+      [self clearUserTiles];
+      @weakify(self);
+      [CVNSeating findBySeatingId:seatingId success:^(CVNSeating *seating) {
+        @strongify(self);
+        [seating.registeredUsers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+          CVNUser *testUser = (CVNUser *)obj;
+          NSLog(@"User Id: %@", testUser.displayName);
+        }];
+        [self.seatingButton setTitle:[NSString stringWithFormat:@"Table\n%lu", (long)seatingId] forState:UIControlStateNormal];
+        self.currentSeating = seating;
+        self.startingAngle = M_PI / 2.0; // Start at 90
+
+        [self updateUserTilesWithUsers:seating.registeredUsers];
+      } failure:^(NSError *error) {
+        
+      }];
+    }
+  }
 }
+
 
 - (void) isCloseToSeatingArea:(NSInteger) seatingNo {
   // Update the view with table number
@@ -111,6 +192,16 @@
       delay += 0.4f;
     }
   }];
+}
+
+- (void) clearUserTiles {
+  [self.userTiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    CVNUserTile *userTile = (CVNUserTile *) obj;
+    [userTile removeFromSuperview];
+    userTile.delegate = nil;
+    [self.userTiles removeObject:userTile];
+  }];
+  self.userTiles = [NSMutableArray array];
 }
 
 - (void) addUserTileForUser:(CVNUser *) user

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CVNUserTile.h"
 
-@interface CVNSeatingViewController : UIViewController<CVNUserSelection>
+#import <EstimoteSDK/ESTBeaconManager.h>
+
+@interface CVNSeatingViewController : UIViewController<CVNUserSelection, ESTBeaconManagerDelegate>
 
 @end
