@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CVNOrderItemCell : UITableViewCell
+@interface CVNOrderItemCell : UITableViewCell <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
-@property (weak, nonatomic) IBOutlet UIButton *removeButton;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
