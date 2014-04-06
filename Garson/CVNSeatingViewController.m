@@ -103,12 +103,18 @@ static const NSInteger kSeatingDistance = 0.2f;
   self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID
                                                     identifier:@"EstimoteSampleRegion"];
   
+  self.region.notifyOnEntry = YES;
+  self.region.notifyOnExit = NO;
+
+  self.beaconManager.avoidUnknownStateBeacons = YES;
+  
   /*
    * Starts looking for Estimote beacons.
    * All callbacks will be delivered to beaconManager delegate.
    */
   [self.beaconManager startRangingBeaconsInRegion:self.region];
-
+  [self.beaconManager startMonitoringForRegion:self.region];
+  [self.beaconManager requestStateForRegion:self.region];
 }
 
 #pragma mark - Test Stuff
@@ -168,6 +174,37 @@ static const NSInteger kSeatingDistance = 0.2f;
   }
 }
 
+- (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region {
+  UILocalNotification *notification = [UILocalNotification new];
+  notification.alertBody = @"Enter region notification";
+  NSLog(@"Region entered");
+  
+  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
+
+- (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region {
+  UILocalNotification *notification = [UILocalNotification new];
+  notification.alertBody = @"Exit region notification";
+  
+  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
+
+-(void)beaconManager:(ESTBeaconManager *)manager
+   didDetermineState:(CLRegionState)state
+           forRegion:(ESTBeaconRegion *)region {
+  if(state == CLRegionStateInside) {
+    NSLog(@"In the region..");
+    UILocalNotification *notification = [UILocalNotification new];
+    notification.alertBody = @"Enter region notification";
+    NSLog(@"Region entered");
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+
+  }
+  else {
+    NSLog(@"Outside the region..");
+  }
+}
 
 - (void) isCloseToSeatingArea:(NSInteger) seatingNo {
   // Update the view with table number
