@@ -70,6 +70,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
+  CVNOrderSummaryView *orderSummaryView = (CVNOrderSummaryView *) self.tableView.tableFooterView;
+  orderSummaryView.order = self.user.currentOrder;
+  [orderSummaryView updateContent];
   NSUInteger numOfItems = [[self.user.currentOrder orderItems] count];
 
   return numOfItems;
@@ -124,22 +127,6 @@
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
   }
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  // Return NO if you do not want the item to be re-orderable.
-  return YES;
-}
-*/
 
 #pragma mark - Navigation
 

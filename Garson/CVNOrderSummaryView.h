@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GarsonAPI/CVNOrder.h>
 
 @protocol CVNOrderUpdate <NSObject>
 -(void) addToOrder;
@@ -17,4 +18,7 @@
 + (instancetype) orderSummaryView;
 
 @property(nonatomic, assign) id<CVNOrderUpdate> delegate;
+@property(nonatomic, strong) CVNOrder *order;
+
+- (void) updateContent;
 @end

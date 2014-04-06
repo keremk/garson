@@ -76,8 +76,14 @@ static NSString * const kFontBlack = @"Lato-Black";
   [self.totalField setFont:[UIFont fontWithName:kFontRegular size:17]];
 }
 
-- (void) initializeContent {
-  
+- (void) updateContent {
+  if (self.order != nil) {
+    self.barSubtotalField.text = [NSString stringWithFormat:@"$%0.2f", self.order.barSubtotal];
+    self.foodSubtotalField.text = [NSString stringWithFormat:@"$%0.2f", self.order.foodSubtotal];
+    self.taxField.text = [NSString stringWithFormat:@"$%0.2f", self.order.taxTotal];
+    self.sfhcField.text = [NSString stringWithFormat:@"$%0.2f", self.order.sfhcTaxTotal];
+    self.totalField.text = [NSString stringWithFormat:@"$%0.2f", self.order.total];
+  }
 }
 
 - (IBAction)addToOrder:(id)sender {
