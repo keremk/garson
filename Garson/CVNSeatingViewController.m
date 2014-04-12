@@ -55,7 +55,7 @@ static const NSInteger kSeatingDistance = 0.2f;
   [self setupSeatingButton];
   [self setupTopBar];
 #ifdef DEBUG
-//  [self testAddingUserTiles];
+  [self testAddingUserTiles];
 #endif
 }
 
@@ -140,7 +140,7 @@ static const NSInteger kSeatingDistance = 0.2f;
   __block ESTBeacon *selectedBeacon = nil;
   [beacons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     ESTBeacon *beacon = (ESTBeacon *) obj;
-    NSLog(@"Beacon Detected %d, distance: %f", [beacon.minor integerValue], [beacon.distance floatValue]);
+    NSLog(@"Beacon Detected %lu, distance: %f", (long)[beacon.minor integerValue], [beacon.distance floatValue]);
     float distance = [beacon.distance floatValue];
     if (distance >= 0 && distance < minDistance) {
       minDistance = distance;

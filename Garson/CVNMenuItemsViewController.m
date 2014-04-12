@@ -57,6 +57,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // Return the number of rows in the section.
+  if (self.menuSection) {
+    self.menuItems = self.menuSection.items;
+  }
+
   return [self.menuItems count];
 }
 
@@ -65,7 +69,9 @@
   CVNMenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell" forIndexPath:indexPath];
   
   // Configure the cell...
-
+  if (self.menuSection) {
+    self.menuItems = self.menuSection.items;
+  }
   CVNMenuItem *menuItem = [self.menuItems objectAtIndex:indexPath.row];
   
   cell.delegate = self;

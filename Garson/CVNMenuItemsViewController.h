@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <GarsonAPI/CVNOrder.h>
+#import <GarsonAPI/CVNMenuSection.h>
 
 #import "CVNMenuItemCell.h"
 
 @interface CVNMenuItemsViewController : UITableViewController<CVNMenuItemDataChange>
 @property(nonatomic, strong) NSArray *menuItems;
+@property(nonatomic, strong) CVNMenuSection *menuSection;
 @property(nonatomic, strong) CVNOrder *order;
 @end

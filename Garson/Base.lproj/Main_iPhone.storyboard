@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g6R-aP-HbE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g6R-aP-HbE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -75,7 +75,7 @@
         <!--Menu Items View Controller - Select Items-->
         <scene sceneID="mJD-fg-cU7">
             <objects>
-                <tableViewController id="yaP-tm-ztn" customClass="CVNMenuItemsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MenuItemsVC" id="yaP-tm-ztn" customClass="CVNMenuItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="175" sectionHeaderHeight="22" sectionFooterHeight="22" id="R4D-xG-i5t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,21 +185,21 @@
         <!--Menu Sections View Controller - Menu-->
         <scene sceneID="Atk-aQ-mRL">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="1BA-Ic-4OR" customClass="CVNMenuSectionsViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="zpg-DD-xNW">
+                <collectionViewController storyboardIdentifier="MenuSectionsVC" autoresizesArchivedViewToFullSize="NO" id="1BA-Ic-4OR" customClass="CVNMenuSectionsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="zpg-DD-xNW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1843137255" green="0.23921568630000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.98823529409999999" green="0.94509803920000002" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Iow-lg-F68">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Iow-lg-F68">
                             <size key="itemSize" width="100" height="100"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="30" minY="5" maxX="30" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuSectionCell" id="lpL-E5-J5Q" customClass="CVNMenuSectionCell">
-                                <rect key="frame" x="30" y="119" width="100" height="100"/>
+                                <rect key="frame" x="30" y="69" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -230,10 +230,6 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XUU-k2-amB">
-                            <rect key="frame" x="0.0" y="64" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="1BA-Ic-4OR" id="QcT-HN-WAX"/>
                             <outlet property="delegate" destination="1BA-Ic-4OR" id="kdo-OO-COH"/>
@@ -426,11 +422,35 @@
                     </navigationItem>
                     <connections>
                         <segue destination="1BA-Ic-4OR" kind="push" identifier="RestaurantMenuDisplaySegue" id="YmX-Hq-dtS"/>
+                        <segue destination="1t3-1u-Bf5" kind="push" identifier="RestaurantMenuDisplaySegue2" id="OeN-Ea-hN9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXs-54-8xE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1573" y="557"/>
+            <point key="canvasLocation" x="1579" y="547"/>
+        </scene>
+        <!--Menu Container View Controller-->
+        <scene sceneID="XlN-Di-l3y">
+            <objects>
+                <viewController id="1t3-1u-Bf5" customClass="CVNMenuContainerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7uj-8Q-Gbh"/>
+                        <viewControllerLayoutGuide type="bottom" id="YHz-K0-vKd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jsd-ow-LvD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7B5-5O-LJ6"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="menuSectionsVCStoryboardId" value="MenuSectionsVC"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="menuItemsVCStoryboardId" value="MenuItemsVC"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRb-7E-mwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2038" y="800"/>
         </scene>
         <!--Sliding View Controller-->
         <scene sceneID="GLm-oc-oQO">

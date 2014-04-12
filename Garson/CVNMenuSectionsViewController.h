@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <GarsonAPI/CVNOrder.h>
+#import <GarsonAPI/CVNMenuSection.h>
+#import <GarsonAPI/CVNRestaurantMenu.h>
 
+@protocol CVNMenuSelectionChanged <NSObject>
+- (void) didSelectMenuSection:(CVNMenuSection *) menuSection;
+@end
 
 @interface CVNMenuSectionsViewController : UICollectionViewController
 @property(nonatomic, strong) CVNOrder *order;
+@property(nonatomic, strong) CVNRestaurantMenu *restaurantMenu;
+@property(nonatomic, assign) id<CVNMenuSelectionChanged> delegate;
 @end

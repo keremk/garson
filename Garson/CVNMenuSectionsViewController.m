@@ -10,7 +10,6 @@
 #import "CVNMenuSectionCell.h"
 #import "CVNMenuItemsViewController.h"
 #import <GarsonAPI/CVNRestaurant.h>
-#import <GarsonAPI/CVNRestaurantMenu.h>
 #import <GarsonAPI/CVNMenuSection.h>
 
 #import <ReactiveCocoa/RACEXTScope.h>
@@ -18,7 +17,6 @@
 
 
 @interface CVNMenuSectionsViewController ()
-@property(nonatomic, strong) CVNRestaurantMenu *restaurantMenu;
 @end
 
 @implementation CVNMenuSectionsViewController
@@ -37,15 +35,15 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view.
-  CVNRestaurant *restaurant = [CVNRestaurant currentRestaurant];
-  @weakify(self);
-  [restaurant currentMenuWithSuccess:^(CVNRestaurantMenu *menu) {
-    @strongify(self);
-    self.restaurantMenu = menu;
-    
-  } failure:^(NSError *error) {
-    
-  }];
+//  CVNRestaurant *restaurant = [CVNRestaurant currentRestaurant];
+//  @weakify(self);
+//  [restaurant currentMenuWithSuccess:^(CVNRestaurantMenu *menu) {
+//    @strongify(self);
+//    self.restaurantMenu = menu;
+//    
+//  } failure:^(NSError *error) {
+//    
+//  }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,8 +80,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   NSArray *menuSections = [self.restaurantMenu sections];
   CVNMenuSection *menuSection = [menuSections objectAtIndex:indexPath.row];
-
-  [self performSegueWithIdentifier:@"MenuItemsDisplaySegue" sender:menuSection];
+  
+  [self.delegate didSelectMenuSection:menuSection];
+//  [self performSegueWithIdentifier:@"MenuItemsDisplaySegue" sender:menuSection];
 }
 
 #pragma mark - Navigation

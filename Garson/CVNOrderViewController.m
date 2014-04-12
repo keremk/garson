@@ -9,6 +9,7 @@
 #import "CVNOrderViewController.h"
 #import "CVNOrderItemCell.h"
 #import "CVNMenuSectionsViewController.h"
+#import "CVNMenuContainerViewController.h"
 
 #import <GarsonAPI/CVNOrder.h>
 #import <GarsonAPI/CVNOrderItem.h>
@@ -96,11 +97,11 @@
 #pragma mark - CVNOrderUpdate
 
 - (IBAction)add:(id)sender {
-  [self performSegueWithIdentifier:@"RestaurantMenuDisplaySegue" sender:self];
+  [self performSegueWithIdentifier:@"RestaurantMenuDisplaySegue2" sender:self];
 }
 
 - (void) addToOrder {
-  [self performSegueWithIdentifier:@"RestaurantMenuDisplaySegue" sender:self];
+  [self performSegueWithIdentifier:@"RestaurantMenuDisplaySegue2" sender:self];
 }
 
 #pragma mark - CVNOrderChange
@@ -137,6 +138,9 @@
   if ([segue.identifier isEqualToString:@"RestaurantMenuDisplaySegue"]) {
     CVNMenuSectionsViewController *menuSectionsVC = [segue destinationViewController];
     menuSectionsVC.order = self.user.currentOrder;
+  } else if ([segue.identifier isEqualToString:@"RestaurantMenuDisplaySegue2"]) {
+    CVNMenuContainerViewController *menuContainerVC = [segue destinationViewController];
+    menuContainerVC.order = self.user.currentOrder;
   }
 
 }
