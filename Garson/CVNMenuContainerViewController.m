@@ -69,8 +69,8 @@ static const CGFloat kMenuSectionsViewHeight = 120.0f;
   }
   [self presentChildViewController:self.menuSectionsVC];
   self.menuSectionsVC.view.frame = frame;
-//  CVNCoverFlowLayout *coverFlowLayout = [[CVNCoverFlowLayout alloc] init];
-//  [self.menuSectionsVC.collectionView setCollectionViewLayout:coverFlowLayout];
+  CVNCoverFlowLayout *coverFlowLayout = [[CVNCoverFlowLayout alloc] init];
+  [self.menuSectionsVC.collectionView setCollectionViewLayout:coverFlowLayout];
 }
 
 - (void) presentMenuItemsViewControllerInFrame:(CGRect) frame {

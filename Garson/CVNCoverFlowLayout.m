@@ -2,8 +2,12 @@
 //  CVNCoverFlowLayout.m
 //  Garson
 //
-//  Created by Kerem Karatal on 4/12/14.
-//  Copyright (c) 2014 CodingVentures. All rights reserved.
+//  Adopted from:
+//  https://github.com/mpospese/IntroducingCollectionViews
+//
+//  Created by Mark Pospesel on 10/7/12.
+//  Copyright (c) 2012 Mark Pospesel. All rights reserved.
+//
 //
 
 #import "CVNCoverFlowLayout.h"
@@ -15,29 +19,23 @@
 #define ZOOM_FACTOR 0.3
 #define FLOW_OFFSET 40
 
-- (id)init
-{
+- (id)init {
   self = [super init];
-  if (self)
-  {
-    BOOL iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+  if (self) {
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.itemSize = (CGSize){100, 100};
-//    self.sectionInset = UIEdgeInsetsMake(iPad? 225 : 0, 35, iPad? 225 : 0, 35);
-    self.minimumLineSpacing = -51.0;
+    self.itemSize = (CGSize){80, 80};
+    self.sectionInset = UIEdgeInsetsMake(0, (320 - 80) / 2, 0, (320 - 80)/ 2);
+    self.minimumLineSpacing = -10.0;
     self.minimumInteritemSpacing = 200;
-//    self.headerReferenceSize = iPad? (CGSize){50, 50} : (CGSize){43, 43};
   }
   return self;
 }
 
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)oldBounds
-{
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)oldBounds {
   return YES;
 }
 
--(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
-{
+-(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect {
   NSArray* array = [super layoutAttributesForElementsInRect:rect];
   CGRect visibleRect;
   visibleRect.origin = self.collectionView.contentOffset;
@@ -57,8 +55,7 @@
   return array;
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
   UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
   CGRect visibleRect;
   visibleRect.origin = self.collectionView.contentOffset;
@@ -69,8 +66,8 @@
   return attributes;
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind
+                                                                     atIndexPath:(NSIndexPath *)indexPath{
   UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:kind atIndexPath:indexPath];
   
   [self setHeaderAttributes:attributes];
@@ -78,14 +75,13 @@
   return attributes;
 }
 
-- (void)setHeaderAttributes:(UICollectionViewLayoutAttributes *)attributes
-{
+- (void)setHeaderAttributes:(UICollectionViewLayoutAttributes *)attributes {
   attributes.transform3D = CATransform3DMakeRotation(-90 * M_PI / 180, 0, 0, 1);
   attributes.size = CGSizeMake(attributes.size.height, attributes.size.width);
 }
 
-- (void)setCellAttributes:(UICollectionViewLayoutAttributes *)attributes forVisibleRect:(CGRect)visibleRect
-{
+- (void)setCellAttributes:(UICollectionViewLayoutAttributes *)attributes
+           forVisibleRect:(CGRect)visibleRect {
   CGFloat distance = CGRectGetMidX(visibleRect) - attributes.center.x;
   CGFloat normalizedDistance = distance / ACTIVE_DISTANCE;
   BOOL isLeft = distance > 0;
@@ -117,8 +113,8 @@
   attributes.transform3D = transform;
 }
 
-- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity
-{
+- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset
+                                 withScrollingVelocity:(CGPoint)velocity {
   CGFloat offsetAdjustment = MAXFLOAT;
   CGFloat horizontalCenter = proposedContentOffset.x + (CGRectGetWidth(self.collectionView.bounds) / 2.0);
   

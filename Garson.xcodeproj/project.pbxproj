@@ -197,6 +197,15 @@
 			name = iPadUI;
 			sourceTree = "<group>";
 		};
+		BD71AAB718FB8ECA00AD00AA /* CustomLayouts */ = {
+			isa = PBXGroup;
+			children = (
+				BD71AAB318F9D82D00AD00AA /* CVNCoverFlowLayout.h */,
+				BD71AAB418F9D82D00AD00AA /* CVNCoverFlowLayout.m */,
+			);
+			name = CustomLayouts;
+			sourceTree = "<group>";
+		};
 		BDD13E4D18413FD6005259E0 = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +245,7 @@
 		BDD13E5F18413FD6005259E0 /* Garson */ = {
 			isa = PBXGroup;
 			children = (
+				BD71AAB718FB8ECA00AD00AA /* CustomLayouts */,
 				18D8CB9518E7B8BD00321E8C /* TransitionAnimators */,
 				18CCA4A118E2C75200DBFCE1 /* Views */,
 				BD522D411841449A00A582AF /* iPadUI */,
@@ -262,8 +272,6 @@
 				18C9EC8518ED26A5008D8344 /* CVNMenuItemCell.m */,
 				BD71AAAF18F8EBDF00AD00AA /* CVNMenuContainerViewController.h */,
 				BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */,
-				BD71AAB318F9D82D00AD00AA /* CVNCoverFlowLayout.h */,
-				BD71AAB418F9D82D00AD00AA /* CVNCoverFlowLayout.m */,
 			);
 			path = Garson;
 			sourceTree = "<group>";

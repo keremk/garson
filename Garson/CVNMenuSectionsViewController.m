@@ -67,7 +67,11 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   CVNMenuSectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MenuSectionCell"
                                                                        forIndexPath:indexPath];
-                              
+  
+  cell.layer.borderColor = [[UIColor whiteColor] CGColor];
+  cell.layer.borderWidth = 2;
+  cell.layer.cornerRadius = 10;
+
   NSArray *menuSections = [self.restaurantMenu sections];
   CVNMenuSection *menuSection = [menuSections objectAtIndex:indexPath.row];
   [cell.sectionImageView setImageWithURL:menuSection.imageURL];
