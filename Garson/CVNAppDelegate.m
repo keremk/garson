@@ -7,14 +7,14 @@
 //
 
 #import "CVNAppDelegate.h"
-
+#import "CVNUtils.h"
 @implementation CVNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   // Override point for customization after application launch.
 #ifdef DEBUG
-  [self logAllFonts];
+//  [self logAllFonts];
 #endif
   return YES;
 }
@@ -54,5 +54,12 @@
       NSLog(@"  %@", name);
     }
   }
+}
+
+- (void) setupAppearence {
+  [[UINavigationBar appearance] setBarTintColor:[UIColor redColor]];
+
+//  [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFEF8ED)];
+  [[UINavigationBar appearance] setTintColor:[UIColor darkGrayColor]];
 }
 @end

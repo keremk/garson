@@ -9,6 +9,8 @@
 #import "CVNMenuSectionsViewController.h"
 #import "CVNMenuSectionCell.h"
 #import "CVNMenuItemsViewController.h"
+#import "CVNCoverFlowLayout.h"
+
 #import <GarsonAPI/CVNRestaurant.h>
 #import <GarsonAPI/CVNMenuSection.h>
 
@@ -85,7 +87,7 @@
   NSArray *menuSections = [self.restaurantMenu sections];
   CVNMenuSection *menuSection = [menuSections objectAtIndex:indexPath.row];
   
-  [self.delegate didSelectMenuSection:menuSection];
+  [self.delegate didSelectMenuSection:menuSection atIndex:indexPath.row];
 //  [self performSegueWithIdentifier:@"MenuItemsDisplaySegue" sender:menuSection];
 }
 
@@ -103,6 +105,20 @@
     menuItemsVC.menuItems = section.items;
     menuItemsVC.order = self.order;
   }
+}
+
+#pragma mark - ScrollViewDelegate
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+  CGFloat offset = scrollView.contentOffset.x;
+  CVNCoverFlowLayout *layout = (CVNCoverFlowLayout *) self.collectionViewLayout;
+  CGFloat spacing = layout.itemSize.width - layout.minimumLineSpacing;
+  NSUInteger selectedItemNo = offset/spacing;
+  NSLog(@"Stopped at %f, Selected = %d", offset, selectedItemNo);
+  NSArray *menuSections = [self.restaurantMenu sections];
+  CVNMenuSection *menuSection = [menuSections objectAtIndex:selectedItemNo];
+
+  [self.delegate didSelectMenuSection:menuSection atIndex:selectedItemNo];
 }
 
 @end

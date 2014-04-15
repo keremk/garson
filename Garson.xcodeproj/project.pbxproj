@@ -41,6 +41,8 @@
 		BD71AAB218F8EBDF00AD00AA /* CVNMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */; };
 		BD71AAB518F9D82D00AD00AA /* CVNCoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB418F9D82D00AD00AA /* CVNCoverFlowLayout.m */; };
 		BD71AAB618F9D82D00AD00AA /* CVNCoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB418F9D82D00AD00AA /* CVNCoverFlowLayout.m */; };
+		BD71AABA18FB962700AD00AA /* CVNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB918FB962700AD00AA /* CVNUtils.m */; };
+		BD71AABB18FB962700AD00AA /* CVNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB918FB962700AD00AA /* CVNUtils.m */; };
 		BDD13E5A18413FD6005259E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD13E5918413FD6005259E0 /* Foundation.framework */; };
 		BDD13E5C18413FD6005259E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD13E5B18413FD6005259E0 /* CoreGraphics.framework */; };
 		BDD13E5E18413FD6005259E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD13E5D18413FD6005259E0 /* UIKit.framework */; };
@@ -101,6 +103,8 @@
 		BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNMenuContainerViewController.m; sourceTree = "<group>"; };
 		BD71AAB318F9D82D00AD00AA /* CVNCoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNCoverFlowLayout.h; sourceTree = "<group>"; };
 		BD71AAB418F9D82D00AD00AA /* CVNCoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNCoverFlowLayout.m; sourceTree = "<group>"; };
+		BD71AAB818FB962700AD00AA /* CVNUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNUtils.h; sourceTree = "<group>"; };
+		BD71AAB918FB962700AD00AA /* CVNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNUtils.m; sourceTree = "<group>"; };
 		BDD13E5618413FD6005259E0 /* Garson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD13E5918413FD6005259E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BDD13E5B18413FD6005259E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -272,6 +276,8 @@
 				18C9EC8518ED26A5008D8344 /* CVNMenuItemCell.m */,
 				BD71AAAF18F8EBDF00AD00AA /* CVNMenuContainerViewController.h */,
 				BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */,
+				BD71AAB818FB962700AD00AA /* CVNUtils.h */,
+				BD71AAB918FB962700AD00AA /* CVNUtils.m */,
 			);
 			path = Garson;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				18C9EC6A18EA8EBF008D8344 /* CVNMenuSectionsViewController.m in Sources */,
 				18D8CB9818E88F4D00321E8C /* CVNOrderSummaryView.m in Sources */,
 				BDD13E6618413FD6005259E0 /* main.m in Sources */,
+				BD71AABA18FB962700AD00AA /* CVNUtils.m in Sources */,
 				BD71AAB118F8EBDF00AD00AA /* CVNMenuContainerViewController.m in Sources */,
 				18D8CBAD18E91F2900321E8C /* CVNMenuItemsViewController.m in Sources */,
 				18C9EC7B18EBEDC1008D8344 /* CVNMenuSectionCell.m in Sources */,
@@ -483,6 +490,7 @@
 				BDD13E8B18413FD6005259E0 /* GarsonTests.m in Sources */,
 				BD71AAB618F9D82D00AD00AA /* CVNCoverFlowLayout.m in Sources */,
 				18CCA45118E0067900DBFCE1 /* CVNMenuViewController.m in Sources */,
+				BD71AABB18FB962700AD00AA /* CVNUtils.m in Sources */,
 				18C9EC6B18EA8EBF008D8344 /* CVNMenuSectionsViewController.m in Sources */,
 				18D8CBAA18E8EDC400321E8C /* CVNOrderItemCell.m in Sources */,
 				18D8CBAE18E91F2900321E8C /* CVNMenuItemsViewController.m in Sources */,

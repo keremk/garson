@@ -37,6 +37,7 @@
 
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect {
   NSArray* array = [super layoutAttributesForElementsInRect:rect];
+
   CGRect visibleRect;
   visibleRect.origin = self.collectionView.contentOffset;
   visibleRect.size = self.collectionView.bounds.size;
@@ -44,6 +45,8 @@
     if (attributes.representedElementCategory == UICollectionElementCategoryCell)
     {
       if (CGRectIntersectsRect(attributes.frame, rect)) {
+//        NSLog(@"x= %f, width = %f", attributes.center.x, attributes.size.width);
+
         [self setCellAttributes:attributes forVisibleRect:visibleRect];
       }
     }

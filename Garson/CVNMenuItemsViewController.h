@@ -14,6 +14,7 @@
 
 @interface CVNMenuItemsViewController : UITableViewController<CVNMenuItemDataChange>
 @property(nonatomic, strong) NSArray *menuItems;
+@property(nonatomic, strong) NSArray *itemOffsetsPerSection;
 @property(nonatomic, strong) CVNMenuSection *menuSection;
 @property(nonatomic, strong) CVNOrder *order;
 @end

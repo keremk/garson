@@ -12,10 +12,10 @@
 #import <GarsonAPI/CVNRestaurantMenu.h>
 
 @protocol CVNMenuSelectionChanged <NSObject>
-- (void) didSelectMenuSection:(CVNMenuSection *) menuSection;
+- (void) didSelectMenuSection:(CVNMenuSection *) menuSection atIndex:(NSUInteger) sectionIndex;
 @end
 
-@interface CVNMenuSectionsViewController : UICollectionViewController
+@interface CVNMenuSectionsViewController : UICollectionViewController<UIScrollViewDelegate>
 @property(nonatomic, strong) CVNOrder *order;
 @property(nonatomic, strong) CVNRestaurantMenu *restaurantMenu;
 @property(nonatomic, assign) id<CVNMenuSelectionChanged> delegate;

@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
+  self.menuSection = nil;
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
   

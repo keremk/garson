@@ -11,6 +11,7 @@
 #import "CVNUserTile.h"
 #import "CVNSeating.h"
 #import "CVNOrderViewController.h"
+#import "CVNUtils.h"
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <AFNetworking/UIButton+AFNetworking.h>

@@ -106,11 +106,30 @@ static const CGFloat kMenuSectionsViewHeight = 120.0f;
     @strongify(self);
     self.restaurantMenu = menu;
     self.menuSectionsVC.restaurantMenu = menu;
+    NSDictionary *itemsAndOffsets = [self flattenSectionsToItemsForMenu:menu];
+    self.menuItemsVC.menuItems = [itemsAndOffsets objectForKey:@"items"];
+    self.menuItemsVC.itemOffsetsPerSection = [itemsAndOffsets objectForKey:@"offsets"];
     self.menuSectionsVC.order = self.order;
-    self.menuItemsVC.menuSection = [menu.sections objectAtIndex:0];
+//    self.menuItemsVC.menuSection = [menu.sections objectAtIndex:0];
   } failure:^(NSError *error) {
     
   }];
+}
+
+- (NSDictionary *) flattenSectionsToItemsForMenu:(CVNRestaurantMenu *) menu {
+  NSMutableArray *items = [NSMutableArray array];
+  NSMutableArray *sectionOffsets = [NSMutableArray array];
+  
+  __block NSInteger offset = 0;
+  [menu.sections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    NSNumber *offsetNumber = [NSNumber numberWithInteger:offset];
+    [sectionOffsets addObject:offsetNumber];
+
+    CVNMenuSection *menuSection = (CVNMenuSection *) obj;
+    [items addObjectsFromArray:menuSection.items];
+    offset = offset + [menuSection.items count];
+  }];
+  return @{@"items": items, @"offsets": sectionOffsets};
 }
 
 - (void) setOrder:(CVNOrder *)order {
@@ -125,9 +144,11 @@ static const CGFloat kMenuSectionsViewHeight = 120.0f;
   // Dispose of any resources that can be recreated.
 }
 
-- (void) didSelectMenuSection:(CVNMenuSection *) menuSection {
-  self.menuItemsVC.menuSection = menuSection;
-  [self.menuItemsVC.tableView reloadData];
+- (void) didSelectMenuSection:(CVNMenuSection *) menuSection atIndex:(NSUInteger) sectionIndex{
+//  self.menuItemsVC.menuSection = menuSection;
+  NSNumber *scrollToIndexNumber = [self.menuItemsVC.itemOffsetsPerSection objectAtIndex:sectionIndex];
+  NSIndexPath *scrollToIndex = [NSIndexPath indexPathForRow:[scrollToIndexNumber integerValue] inSection:0];
+  [self.menuItemsVC.tableView scrollToRowAtIndexPath:scrollToIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 /*
