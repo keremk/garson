@@ -180,14 +180,14 @@ static const NSInteger kSeatingDistance = 0.2f;
   notification.alertBody = @"Enter region notification";
   NSLog(@"Region entered");
   
-  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+//  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
 
 - (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region {
   UILocalNotification *notification = [UILocalNotification new];
   notification.alertBody = @"Exit region notification";
   
-  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+//  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
 
 -(void)beaconManager:(ESTBeaconManager *)manager
@@ -199,7 +199,7 @@ static const NSInteger kSeatingDistance = 0.2f;
     notification.alertBody = @"Enter region notification";
     NSLog(@"Region entered");
     
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+//    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 
   }
   else {
