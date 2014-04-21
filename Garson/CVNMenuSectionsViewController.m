@@ -70,8 +70,8 @@
   CVNMenuSectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MenuSectionCell"
                                                                        forIndexPath:indexPath];
   
-  cell.layer.borderColor = [[UIColor whiteColor] CGColor];
-  cell.layer.borderWidth = 2;
+//  cell.layer.borderColor = [[UIColor whiteColor] CGColor];
+//  cell.layer.borderWidth = 2;
   cell.layer.cornerRadius = 10;
 
   NSArray *menuSections = [self.restaurantMenu sections];

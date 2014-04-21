@@ -8,37 +8,47 @@
 
 #import "CVNMenuItemCell.h"
 @interface CVNMenuItemCell()
-@property (weak, nonatomic) IBOutlet UIStepper *itemCountStepper;
+@property (weak, nonatomic) IBOutlet UIImageView *valueBackground;
 @end
 
 @implementation CVNMenuItemCell {
   NSInteger _internalCount;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)awakeFromNib
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+  self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+  if (self) {
     // Initialization code
+  }
+  return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
+- (void)awakeFromNib {
+  // Initialization code
+}
 
-    // Configure the view for the selected state
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+  [super setSelected:selected animated:animated];
+
+  // Configure the view for the selected state
+}
+
+- (void) updateItemCountLabelWithCount:(NSInteger) count {
+  if (count == 0) {
+    self.itemCountLabel.hidden = YES;
+    self.valueBackground.hidden = YES;
+  } else {
+    self.valueBackground.hidden = NO;
+    self.itemCountLabel.hidden = NO;
+  }
+  self.itemCountStepper.value = count;
+  self.itemCountLabel.text = [NSString stringWithFormat:@"%d", count];
 }
 
 - (IBAction)counterValueChanged:(id)sender {
   UIStepper *stepper = (UIStepper *) sender;
-  self.itemCountLabel.text = [NSString stringWithFormat:@"%lu Items", (long)stepper.value ];
+  NSInteger value = stepper.value;
+  [self updateItemCountLabelWithCount:value];
   [self.delegate menuItemCell:self itemCountChanged:(NSInteger) stepper.value];
 }
 

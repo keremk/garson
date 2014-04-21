@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemCountLabel;
+@property (weak, nonatomic) IBOutlet UIStepper *itemCountStepper;
+
 @property (weak, nonatomic) id<CVNMenuItemDataChange> delegate;
 @property (assign, nonatomic) NSInteger itemIndex;
+
+- (void) updateItemCountLabelWithCount:(NSInteger) count;
 @end

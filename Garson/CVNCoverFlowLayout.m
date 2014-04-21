@@ -18,13 +18,14 @@
 #define TRANSLATE_DISTANCE 100
 #define ZOOM_FACTOR 0.3
 #define FLOW_OFFSET 40
+#define ITEM_SIZE 70.0
 
 - (id)init {
   self = [super init];
   if (self) {
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.itemSize = (CGSize){80, 80};
-    self.sectionInset = UIEdgeInsetsMake(0, (320 - 80) / 2, 0, (320 - 80)/ 2);
+    self.itemSize = (CGSize){ITEM_SIZE, ITEM_SIZE};
+    self.sectionInset = UIEdgeInsetsMake(0, (320 - ITEM_SIZE) / 2, 0, (320 - ITEM_SIZE)/ 2);
     self.minimumLineSpacing = -10.0;
     self.minimumInteritemSpacing = 200;
   }

@@ -11,7 +11,9 @@
 #import "CVNMenuItemsViewController.h"
 #import "CVNCoverFlowLayout.h"
 #import <GarsonAPI/CVNRestaurant.h>
+#import "CVNUtils.h"
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
 @interface CVNMenuContainerViewController ()
@@ -25,8 +27,8 @@
 @end
 
   // http://www.idev101.com/code/User_Interface/sizes.html
-static const CGFloat kMenuSectionsViewYOffset = 64.0f;
-static const CGFloat kMenuSectionsViewHeight = 120.0f;
+static const CGFloat kMenuSectionsViewYOffset = 111.0f;
+static const CGFloat kMenuSectionsViewHeight = 111.0f;
 
 @implementation CVNMenuContainerViewController
 
@@ -54,13 +56,14 @@ static const CGFloat kMenuSectionsViewHeight = 120.0f;
     viewBounds = self.view.bounds;
   }
   
-  CGRect menuSectionsViewFrame = CGRectMake(0.0, kMenuSectionsViewYOffset, viewBounds.size.width, kMenuSectionsViewHeight);
-  CGRect menuItemsViewFrame = CGRectMake(0.0, kMenuSectionsViewYOffset + kMenuSectionsViewHeight, viewBounds.size.width, viewBounds.size.height - kMenuSectionsViewHeight);
+  CGRect menuSectionsViewFrame = CGRectMake(0.0, viewBounds.size.height - kMenuSectionsViewYOffset, viewBounds.size.width, kMenuSectionsViewHeight);
+  CGRect menuItemsViewFrame = CGRectMake(0.0, 0.0, viewBounds.size.width, viewBounds.size.height - kMenuSectionsViewHeight);
   self.menuSectionsViewCenter = CGPointMake(CGRectGetMidX(menuSectionsViewFrame), CGRectGetMidY(menuSectionsViewFrame));
   self.menuItemsViewCenter = CGPointMake(CGRectGetMidX(menuItemsViewFrame), CGRectGetMidY(menuItemsViewFrame));
   
   [self presentMenuSectionsViewControllerInFrame:menuSectionsViewFrame];
   [self presentMenuItemsViewControllerInFrame:menuItemsViewFrame];
+  [self addDoneButton];
 }
 
 - (void) presentMenuSectionsViewControllerInFrame:(CGRect) frame {
@@ -100,6 +103,7 @@ static const CGFloat kMenuSectionsViewHeight = 120.0f;
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view.
+  
   CVNRestaurant *restaurant = [CVNRestaurant currentRestaurant];
   @weakify(self);
   [restaurant currentMenuWithSuccess:^(CVNRestaurantMenu *menu) {
@@ -114,6 +118,25 @@ static const CGFloat kMenuSectionsViewHeight = 120.0f;
   } failure:^(NSError *error) {
     
   }];
+}
+
+- (void) addDoneButton {
+  CGRect frame = CGRectMake(226.0, 28.0, 85.0, 30.0);
+  UIButton *button = [[UIButton alloc] initWithFrame:frame];
+  
+  button.backgroundColor = UIColorFromRGB(0x55C45F);
+  [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [button setTitle:@"DONE" forState:UIControlStateNormal];
+  @weakify(self);
+  button.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    @strongify(self);
+    [self dismissViewControllerAnimated:YES completion:^{}];
+    return [RACSignal empty];
+  }];
+
+  
+  [self.view insertSubview:button aboveSubview:self.menuItemsVC.view];
+
 }
 
 - (NSDictionary *) flattenSectionsToItemsForMenu:(CVNRestaurantMenu *) menu {
@@ -149,6 +172,7 @@ static const CGFloat kMenuSectionsViewHeight = 120.0f;
   NSNumber *scrollToIndexNumber = [self.menuItemsVC.itemOffsetsPerSection objectAtIndex:sectionIndex];
   NSIndexPath *scrollToIndex = [NSIndexPath indexPathForRow:[scrollToIndexNumber integerValue] inSection:0];
   [self.menuItemsVC.tableView scrollToRowAtIndexPath:scrollToIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//  [self addDoneButton];
 }
 
 /*
