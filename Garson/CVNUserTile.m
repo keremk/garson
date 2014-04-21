@@ -8,6 +8,7 @@
 
 #import "CVNUserTile.h"
 #import <AFNetworking/UIButton+AFNetworking.h>
+#import "CVNUtils.h"
 
 @interface CVNUserTile()
 @property (weak, nonatomic) IBOutlet UIButton *userImageButton;
@@ -47,7 +48,7 @@
 
 - (void) setupImageButton {  
   self.userImageButton.layer.masksToBounds = YES;
-  self.userImageButton.layer.borderColor = [[UIColor colorWithRed:0.99f green:0.50f blue:0.41f alpha:1.0f] CGColor];
+  self.userImageButton.layer.borderColor = [UIColorFromRGB(0x4EB7CD) CGColor];
   self.userImageButton.layer.borderWidth = 5.0f;
   self.userImageButton.layer.cornerRadius = self.bounds.size.height / 2.0f;
   [self.userImageButton addTarget:self action:@selector(tileSelected:) forControlEvents:UIControlEventTouchUpInside];

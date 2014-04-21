@@ -73,10 +73,12 @@ static const NSInteger kSeatingDistance = 0.2f;
 }
 
 - (void) setupTopBar {
-  [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                forBarMetrics:UIBarMetricsDefault];
-  self.navigationController.navigationBar.shadowImage = [UIImage new];
+  self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0xA5AAB5);
   self.navigationController.navigationBar.translucent = YES;
+//  [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+//                                                forBarMetrics:UIBarMetricsDefault];
+//  self.navigationController.navigationBar.shadowImage = [UIImage new];
+//  self.navigationController.navigationBar.translucent = YES;
 }
 
 - (void) setupSeatingButton {

@@ -25,6 +25,36 @@
 
 - (void)awakeFromNib {
   // Initialization code
+  UISwipeGestureRecognizer *leftRecognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleLeftGesture:)];
+  leftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+  [self addGestureRecognizer:leftRecognizer];
+  
+  UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleRightGesture:)];
+  rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+  [self addGestureRecognizer:rightRecognizer];
+  
+}
+
+- (void)handleLeftGesture:(UIGestureRecognizer *)gestureRecognizer {
+  UISwipeGestureRecognizer *recognizer = (UISwipeGestureRecognizer *) gestureRecognizer;
+
+  self.itemCountStepper.value -= 1;
+  NSLog(@"Swipe Left %f", self.itemCountStepper.value);
+  if (self.itemCountStepper.value < 0) {
+    self.itemCountStepper.value = 0;
+  }
+  [self updateItemCountLabelWithCount:self.itemCountStepper.value];
+  [self.delegate menuItemCell:self itemCountChanged:(NSInteger) self.itemCountStepper.value];
+}
+
+- (void)handleRightGesture:(UIGestureRecognizer *)gestureRecognizer {
+  UISwipeGestureRecognizer *recognizer = (UISwipeGestureRecognizer *) gestureRecognizer;
+
+  self.itemCountStepper.value += 1;
+  NSLog(@"Swipe Right %f", self.itemCountStepper.value);
+  [self updateItemCountLabelWithCount:self.itemCountStepper.value];
+  [self.delegate menuItemCell:self itemCountChanged:(NSInteger) self.itemCountStepper.value];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -70,8 +70,6 @@
   CVNMenuSectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MenuSectionCell"
                                                                        forIndexPath:indexPath];
   
-//  cell.layer.borderColor = [[UIColor whiteColor] CGColor];
-//  cell.layer.borderWidth = 2;
   cell.layer.cornerRadius = 10;
 
   NSArray *menuSections = [self.restaurantMenu sections];
@@ -113,7 +111,7 @@
   CGFloat offset = scrollView.contentOffset.x;
   CVNCoverFlowLayout *layout = (CVNCoverFlowLayout *) self.collectionViewLayout;
   CGFloat spacing = layout.itemSize.width - layout.minimumLineSpacing;
-  NSUInteger selectedItemNo = offset/spacing;
+  NSUInteger selectedItemNo = ceil(offset/spacing);
   NSLog(@"Stopped at %f, Selected = %d", offset, selectedItemNo);
   NSArray *menuSections = [self.restaurantMenu sections];
   CVNMenuSection *menuSection = [menuSections objectAtIndex:selectedItemNo];

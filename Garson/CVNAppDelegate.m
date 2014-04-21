@@ -58,11 +58,6 @@
 }
 
 - (void) setupAppearence {
-  [[UINavigationBar appearance] setBarTintColor:[UIColor redColor]];
 
-//  [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFEF8ED)];
-  [[UINavigationBar appearance] setTintColor:[UIColor darkGrayColor]];
-//  [[UIStepper appearance] setIncrementImage:[UIImage imageNamed:@"plus-512.png"] forState:UIControlStateNormal];
-//  [[UIStepper appearance] setDecrementImage:[UIImage imageNamed:@"minus-512.png"] forState:UIControlStateNormal];
 }
 @end
