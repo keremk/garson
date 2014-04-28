@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GarsonAPI/CVNMenuSection.h>
 
 @interface CVNMenuSectionCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *sectionImageView;
 @property (weak, nonatomic) IBOutlet UILabel *sectionTitleLabel;
+@property (strong, nonatomic) CVNMenuSection *menuSection;
 @end

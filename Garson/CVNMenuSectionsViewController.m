@@ -19,12 +19,12 @@
 
 
 @interface CVNMenuSectionsViewController ()
+@property(nonatomic, weak) UIPageControl *pageControl;
 @end
 
 @implementation CVNMenuSectionsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
       // Custom initialization
@@ -33,25 +33,41 @@
 }
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view.
-//  CVNRestaurant *restaurant = [CVNRestaurant currentRestaurant];
-//  @weakify(self);
-//  [restaurant currentMenuWithSuccess:^(CVNRestaurantMenu *menu) {
-//    @strongify(self);
-//    self.restaurantMenu = menu;
-//    
-//  } failure:^(NSError *error) {
-//    
-//  }];
+  
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
+}
+
+- (void) addPageControl {
+  if (self.pageControl == nil) {
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectZero];
+    pageControl.tintColor = [UIColor whiteColor];
+    self.pageControl = pageControl;
+    [self updatePageControl:pageControl forNumberOfPages:4];
+    [self.view insertSubview:pageControl aboveSubview:self.collectionView];
+  } else {
+    [self updatePageControl:self.pageControl forNumberOfPages:[[self.restaurantMenu sections] count]];
+  }
+}
+
+- (void) updatePageControl:(UIPageControl *)pageControl forNumberOfPages:(NSUInteger) pages {
+  CGSize size = [pageControl sizeForNumberOfPages:pages];
+  CGFloat centeredX = self.view.bounds.size.width - size.width / 2;
+  CGFloat y = self.view.bounds.size.height - size.height - 10.0;
+  CGRect frame = CGRectMake(centeredX, y, size.width, size.height);
+  [pageControl setFrame:frame];
+}
+
+- (void) setRestaurantMenu:(CVNRestaurantMenu *) menu {
+  if (menu != self.restaurantMenu) {
+    self.restaurantMenu = menu;
+    [self addPageControl];
+  }
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -20,13 +20,14 @@ PODS:
     - AFNetworking/NSURLSession
   - ECSlidingViewController (2.0.1)
   - EstimoteSDK (1.3.0)
-  - Facebook-iOS-SDK (3.13.0)
+  - Facebook-iOS-SDK (3.13.1)
   - GarsonAPI (0.1.0):
     - AFNetworking (~> 2.2)
     - Facebook-iOS-SDK (~> 3.12)
     - Mantle (~> 1.3)
     - ReactiveCocoa (~> 2.2)
     - SSKeychain (~> 1.2)
+  - JBKenBurnsView (0.3)
   - Mantle (1.4.1):
     - Mantle/extobjc
   - Mantle/extobjc (1.4.1)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - ECSlidingViewController (~> 2.0.1)
   - EstimoteSDK
   - GarsonAPI (from `../GarsonAPI/GarsonAPI.podspec`)
+  - JBKenBurnsView
 
 EXTERNAL SOURCES:
   GarsonAPI:
@@ -52,10 +54,11 @@ SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   ECSlidingViewController: d7bb96ee5bbe261ed80ee16a513f94b9fd3c9767
   EstimoteSDK: f77e7cd88abd9b3be725041550e5aad727353d4f
-  Facebook-iOS-SDK: 5788541337dc88265bc940cb5ffb05915f9b64e3
+  Facebook-iOS-SDK: 47ae9e54684c84f93d75d4e6ab47cd031abdf406
   GarsonAPI: 646934f4e78af6da95a24794ccec3d645c343c11
+  JBKenBurnsView: 70be145e229cdf56b11a0c73165a77f439ddc1a9
   Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
   ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
   SSKeychain: 3d0b76c87e7b062a7ad1631a825fddec84367d44
 
-COCOAPODS: 0.31.1
+COCOAPODS: 0.32.1

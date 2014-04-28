@@ -37,6 +37,8 @@
 		18D8CBAD18E91F2900321E8C /* CVNMenuItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8CBAC18E91F2900321E8C /* CVNMenuItemsViewController.m */; };
 		18D8CBAE18E91F2900321E8C /* CVNMenuItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8CBAC18E91F2900321E8C /* CVNMenuItemsViewController.m */; };
 		1CE3B3FC740E4725899AA57A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A72D012F03864A1DAB50660D /* libPods.a */; };
+		BD3175B6190D9E41006594C8 /* CVNMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3175B5190D9E41006594C8 /* CVNMenuItemCell.xib */; };
+		BD3175B8190DC73F006594C8 /* CVNMenuSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3175B7190DC73F006594C8 /* CVNMenuSectionCell.xib */; };
 		BD71AAB118F8EBDF00AD00AA /* CVNMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */; };
 		BD71AAB218F8EBDF00AD00AA /* CVNMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */; };
 		BD71AAB518F9D82D00AD00AA /* CVNCoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BD71AAB418F9D82D00AD00AA /* CVNCoverFlowLayout.m */; };
@@ -99,6 +101,8 @@
 		18D8CBAC18E91F2900321E8C /* CVNMenuItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNMenuItemsViewController.m; sourceTree = "<group>"; };
 		53D1A83D10B74A2B82B7263F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A72D012F03864A1DAB50660D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3175B5190D9E41006594C8 /* CVNMenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVNMenuItemCell.xib; sourceTree = "<group>"; };
+		BD3175B7190DC73F006594C8 /* CVNMenuSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVNMenuSectionCell.xib; sourceTree = "<group>"; };
 		BD71AAAF18F8EBDF00AD00AA /* CVNMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNMenuContainerViewController.h; sourceTree = "<group>"; };
 		BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNMenuContainerViewController.m; sourceTree = "<group>"; };
 		BD71AAB318F9D82D00AD00AA /* CVNCoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNCoverFlowLayout.h; sourceTree = "<group>"; };
@@ -174,6 +178,12 @@
 				18D8CB9618E88F4D00321E8C /* CVNOrderSummaryView.h */,
 				18D8CB9718E88F4D00321E8C /* CVNOrderSummaryView.m */,
 				18D8CB9A18E88F6400321E8C /* CVNOrderSummaryView.xib */,
+				18C9EC7918EBEDC1008D8344 /* CVNMenuSectionCell.h */,
+				18C9EC7A18EBEDC1008D8344 /* CVNMenuSectionCell.m */,
+				BD3175B7190DC73F006594C8 /* CVNMenuSectionCell.xib */,
+				18C9EC8418ED26A5008D8344 /* CVNMenuItemCell.h */,
+				18C9EC8518ED26A5008D8344 /* CVNMenuItemCell.m */,
+				BD3175B5190D9E41006594C8 /* CVNMenuItemCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -270,10 +280,6 @@
 				18D8CBAC18E91F2900321E8C /* CVNMenuItemsViewController.m */,
 				18C9EC6818EA8EBF008D8344 /* CVNMenuSectionsViewController.h */,
 				18C9EC6918EA8EBF008D8344 /* CVNMenuSectionsViewController.m */,
-				18C9EC7918EBEDC1008D8344 /* CVNMenuSectionCell.h */,
-				18C9EC7A18EBEDC1008D8344 /* CVNMenuSectionCell.m */,
-				18C9EC8418ED26A5008D8344 /* CVNMenuItemCell.h */,
-				18C9EC8518ED26A5008D8344 /* CVNMenuItemCell.m */,
 				BD71AAAF18F8EBDF00AD00AA /* CVNMenuContainerViewController.h */,
 				BD71AAB018F8EBDF00AD00AA /* CVNMenuContainerViewController.m */,
 				BD71AAB818FB962700AD00AA /* CVNUtils.h */,
@@ -394,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDD13E7018413FD6005259E0 /* Main_iPad.storyboard in Resources */,
+				BD3175B8190DC73F006594C8 /* CVNMenuSectionCell.xib in Resources */,
 				18C9EC6D18EAA22C008D8344 /* settings_local.plist in Resources */,
 				18D8CB9B18E88F6400321E8C /* CVNOrderSummaryView.xib in Resources */,
 				BDD13E7818413FD6005259E0 /* Images.xcassets in Resources */,
@@ -404,6 +411,7 @@
 				18CCA44D18DF765F00DBFCE1 /* Lato-Reg.ttf in Resources */,
 				BDD13E6418413FD6005259E0 /* InfoPlist.strings in Resources */,
 				18CCA44B18DF765F00DBFCE1 /* Lato-Bla.ttf in Resources */,
+				BD3175B6190D9E41006594C8 /* CVNMenuItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -72,7 +72,7 @@
   
   cell.delegate = self;
   cell.itemIndex = indexPath.row;
-  cell.nameLabel.text = menuItem.name;
+  cell.titleLabel.text = menuItem.name;
   cell.descriptionLabel.text = menuItem.description;
   [cell.itemImageView setImageWithURL:menuItem.imageURL];
   cell.priceLabel.text = [menuItem formattedPrice];

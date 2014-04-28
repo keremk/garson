@@ -12,7 +12,7 @@
 
 #import "CVNMenuItemCell.h"
 
-@interface CVNMenuItemsViewController : UITableViewController<CVNMenuItemDataChange>
+@interface CVNMenuItemsViewController : UICollectionViewController<CVNMenuItemDataChange>
 @property(nonatomic, strong) NSArray *menuItems;
 @property(nonatomic, strong) NSArray *itemOffsetsPerSection;
 @property(nonatomic, strong) CVNMenuSection *menuSection;

@@ -14,8 +14,8 @@
 - (void) menuItemCell:(CVNMenuItemCell *) cell itemCountChanged:(NSInteger) itemCount;
 @end
 
-@interface CVNMenuItemCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@interface CVNMenuItemCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;

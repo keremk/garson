@@ -19,16 +19,13 @@
 @interface CVNMenuContainerViewController ()
 @property(nonatomic, strong) CVNMenuSectionsViewController *menuSectionsVC;
 @property(nonatomic, strong) CVNMenuItemsViewController *menuItemsVC;
-@property(nonatomic, assign) CGPoint menuSectionsViewCenter;
-@property(nonatomic, assign) CGPoint menuItemsViewCenter;
 
 @property(nonatomic, strong) CVNRestaurantMenu *restaurantMenu;
 
 @end
 
-  // http://www.idev101.com/code/User_Interface/sizes.html
-static const CGFloat kMenuSectionsViewYOffset = 111.0f;
-static const CGFloat kMenuSectionsViewHeight = 111.0f;
+// http://www.idev101.com/code/User_Interface/sizes.html
+static const CGFloat kMenuSectionsViewHeight = 352.0f;
 
 @implementation CVNMenuContainerViewController
 
@@ -41,7 +38,7 @@ static const CGFloat kMenuSectionsViewHeight = 111.0f;
     return self;
 }
 
-- (void)awakeFromNib {
+- (void) awakeFromNib {
   [super awakeFromNib];
   if (self.menuSectionsVCStoryboardId) {
     self.menuSectionsVC = [self.storyboard instantiateViewControllerWithIdentifier:self.menuSectionsVCStoryboardId];
@@ -56,11 +53,9 @@ static const CGFloat kMenuSectionsViewHeight = 111.0f;
     viewBounds = self.view.bounds;
   }
   
-  CGRect menuSectionsViewFrame = CGRectMake(0.0, viewBounds.size.height - kMenuSectionsViewYOffset, viewBounds.size.width, kMenuSectionsViewHeight);
-  CGRect menuItemsViewFrame = CGRectMake(0.0, 0.0, viewBounds.size.width, viewBounds.size.height - kMenuSectionsViewHeight);
-  self.menuSectionsViewCenter = CGPointMake(CGRectGetMidX(menuSectionsViewFrame), CGRectGetMidY(menuSectionsViewFrame));
-  self.menuItemsViewCenter = CGPointMake(CGRectGetMidX(menuItemsViewFrame), CGRectGetMidY(menuItemsViewFrame));
-  
+  CGRect menuSectionsViewFrame = CGRectMake(0.0, 0.0, viewBounds.size.width, kMenuSectionsViewHeight);
+  CGRect menuItemsViewFrame = CGRectMake(0.0, kMenuSectionsViewHeight, viewBounds.size.width, viewBounds.size.height - kMenuSectionsViewHeight);
+
   [self presentMenuSectionsViewControllerInFrame:menuSectionsViewFrame];
   [self presentMenuItemsViewControllerInFrame:menuItemsViewFrame];
   [self addDoneButton];
@@ -72,8 +67,6 @@ static const CGFloat kMenuSectionsViewHeight = 111.0f;
   }
   [self presentChildViewController:self.menuSectionsVC];
   self.menuSectionsVC.view.frame = frame;
-  CVNCoverFlowLayout *coverFlowLayout = [[CVNCoverFlowLayout alloc] init];
-  [self.menuSectionsVC.collectionView setCollectionViewLayout:coverFlowLayout];
 }
 
 - (void) presentMenuItemsViewControllerInFrame:(CGRect) frame {
@@ -174,16 +167,5 @@ static const CGFloat kMenuSectionsViewHeight = 111.0f;
   [self.menuItemsVC.tableView scrollToRowAtIndexPath:scrollToIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
 //  [self addDoneButton];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
